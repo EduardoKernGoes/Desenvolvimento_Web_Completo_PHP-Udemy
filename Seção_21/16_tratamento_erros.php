@@ -1,5 +1,6 @@
 <?php
 
+    //Erros comuns
     try{
         echo '<h3> --- Try --- </h3>';
 
@@ -20,4 +21,27 @@
         echo '<h3> --- Finally --- </h3>';
     }
 
+    echo '<hr>';
+
+    //Erros customizados
+
+    class ExceptionCustomizada extends Exception{
+        private $erro = '';
+
+        public function __construct($erro){
+            $this->erro = $erro;
+        }
+
+        public function exibirMensagem(){
+            return $this->erro;
+        }
+    }
+
+    try{
+        
+        throw new ExceptionCustomizada('Esse é um erro de teste');
+
+    }catch (ExceptionCustomizada $e){
+        echo $e->exibirMensagem();
+    }
 ?>
